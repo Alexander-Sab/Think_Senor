@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const loader = require("sass-loader");
 
 module.exports = {
   context: path.resolve(__dirname, "src"), // смотрит за исходниками в папке src
@@ -15,11 +16,11 @@ module.exports = {
   },
   // модули
   resolve: {
-extensions: [".js"], // расширения файлов
-alias: {
-  "@": path.resolve(__dirname, "src"), // убираем import ../../../core/Component
-  "@core": path.resolve(__dirname, "src/core"), // теперь пишим import @core/Component 
-}
+    extensions: [".js"], // расширения файлов
+    alias: {
+      "@": path.resolve(__dirname, "src"), // убираем import ../../../core/Component
+      "@core": path.resolve(__dirname, "src/core"), // теперь пишим import @core/Component
+    },
   },
 
   // плагины
@@ -41,4 +42,29 @@ alias: {
       filename: "bundle.[fullhash].css",
     }),
   ],
+  // лоадер
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i, // для sass
+        use: [
+          //"style-loader",
+          MiniCssExtractPlugin.loader, // вместо style-loader
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+      // для babel
+      {
+        test: /\.m?js$/, // для js
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+    ],
+  },
 };
