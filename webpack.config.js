@@ -4,15 +4,39 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const loader = require("sass-loader");
+
+// для продакшенской версии // npm i -D cross-env // определяет на какой операционной системе мы работаем
+const isProd = process.env.NODE_ENV === "production";
+const isDev = !isProd;
+const filename = (ext) =>
+  isDev ? `bundle.${ext}` : `bundle.[fullhash].${ext}`;
+const jsLoaders = () => {
+  const loaders = [
+    {
+      loader: "babel-loader",
+      options: {
+        presets: ["@babel/preset-env"],
+        plugins: ["@babel/plugin-proposal-class-properties"],
+      },
+    },
+  ];
+  // устанавливаем npm i eslint eslint-loader @babel/eslint-parser -D
+  if (isDev) {
+    loaders.push("eslint-loader");
+  }
+  return loaders;
+};
+
+// console.log("IS PROD", isProd); // dev false в продакшен true
+// console.log("IS DEV", isDev); // dev true в продакшен false
 
 module.exports = {
   context: path.resolve(__dirname, "src"), // смотрит за исходниками в папке src
   mode: "development", // режим разработки
-  entry: "./index.js", // точка входа
+  entry: ["@babel/polyfill", "./index.js"], // точка входа
   output: {
+    filename: filename("js"),
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.[fullhash].js", // [fullhash] решает проблему с кэшированием
   },
   // модули
   resolve: {
@@ -22,12 +46,22 @@ module.exports = {
       "@core": path.resolve(__dirname, "src/core"), // теперь пишим import @core/Component
     },
   },
-
+  devtool: isDev ? "source-map" : false, // "source-map" --- Рекомендуемый выбор для производственных сборок с высококачественными исходными картами
+  // настройки devServer
+  devServer: {
+    port: 3000, // 3000 часто используется в качестве стандартного порта для локальных серверов
+    hot: isDev, // включает hot module replacement
+  },
   // плагины
   plugins: [
+    // ключи настроек
     new CleanWebpackPlugin(), // очищает папку dist
     new HtmlWebpackPlugin({
       template: "./index.html", // шаблон для html
+      minify: {
+        removeComments: isProd, // удаляет комменты
+        collapseWhitespace: isProd, // удаляет пробелы
+      },
     }),
     new CopyPlugin({
       // для копирования файлов из папки src/favicon.ico в папку dist
@@ -39,7 +73,7 @@ module.exports = {
       ],
     }),
     new MiniCssExtractPlugin({
-      filename: "bundle.[fullhash].css",
+      filename: filename("css"),
     }),
   ],
   // лоадер
@@ -48,7 +82,7 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i, // для sass
         use: [
-          //"style-loader",
+          // "style-loader",
           MiniCssExtractPlugin.loader, // вместо style-loader
           "css-loader",
           "sass-loader",
@@ -58,12 +92,7 @@ module.exports = {
       {
         test: /\.m?js$/, // для js
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
+        use: jsLoaders(),
       },
     ],
   },

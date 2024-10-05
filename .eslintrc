@@ -1,0 +1,23 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    // в них работаем
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  // подключаем наши правила
+  "rules": {
+    "linebreak-style": ["off"], // Отключает правило linebreak-style
+    "quotes": ["error", "single"], // Требует использовать одинарные кавычки
+    "max-len": ["error", { "code": 150 }], // Увеличивает максимально допустимую длину строки до 100
+
+    "semi": "off", // Отключает требование точки с запятой
+    "arrow-parens": "off", // Отключает требование скобок
+    "comma-dangle": "off", // Отключает требование запятых в конце объекта
+    "require-jsdoc": ["off"] // Отключает требование JSDoc
+  },
+  // используем готовый пресет
+  // установка npm i -D eslint eslint-config-google
+  "extends": ["eslint:recommended", "google"]
+}

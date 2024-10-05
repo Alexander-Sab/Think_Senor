@@ -1,4 +1,4 @@
-import "./module";
-import "./scss/index.scss";
+import './module';
+import './scss/index.scss';
 
-console.log("Woking!");
+console.log('Woking!');
