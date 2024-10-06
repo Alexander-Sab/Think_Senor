@@ -26,7 +26,6 @@ const jsLoaders = () => {
   }
   return loaders;
 };
-
 // console.log("IS PROD", isProd); // dev false в продакшен true
 // console.log("IS DEV", isDev); // dev true в продакшен false
 
