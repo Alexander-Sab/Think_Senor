@@ -73,8 +73,26 @@
         <mxCell id="14c2O7PuD31gTfwQ0sOX-27" value="Excel Dashboard" style="rounded=0;whiteSpace=wrap;html=1;fontSize=28;" vertex="1" parent="1">
           <mxGeometry x="80" y="930" width="1520" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="14c2O7PuD31gTfwQ0sOX-28" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="80" y="1010" width="140" height="140" as="geometry" />
+        <mxCell id="14c2O7PuD31gTfwQ0sOX-29" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1010" width="1520" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="14c2O7PuD31gTfwQ0sOX-31" value="+" style="rounded=0;whiteSpace=wrap;html=1;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="210" y="1040" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="14c2O7PuD31gTfwQ0sOX-32" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="157.5" y="1250" width="1365" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="14c2O7PuD31gTfwQ0sOX-33" value="Text" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="750" y="1020" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="14c2O7PuD31gTfwQ0sOX-34" value="Название&amp;nbsp;&lt;br&gt;Таблицы" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="210" y="1280" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="14c2O7PuD31gTfwQ0sOX-35" value="Дата открытия" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="1280" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="14c2O7PuD31gTfwQ0sOX-37" value="" style="rounded=0;whiteSpace=wrap;html=1;fontSize=28;" vertex="1" parent="1">
+          <mxGeometry x="157.5" y="1370" width="1365" height="90" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
