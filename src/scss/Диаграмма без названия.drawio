@@ -73,6 +73,9 @@
         <mxCell id="14c2O7PuD31gTfwQ0sOX-27" value="Excel Dashboard" style="rounded=0;whiteSpace=wrap;html=1;fontSize=28;" vertex="1" parent="1">
           <mxGeometry x="80" y="930" width="1520" height="80" as="geometry" />
         </mxCell>
+        <mxCell id="14c2O7PuD31gTfwQ0sOX-28" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="90" y="1010" width="80" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
