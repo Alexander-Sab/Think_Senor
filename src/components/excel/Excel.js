@@ -1,22 +1,23 @@
+import { $ } from "@core/dom";
+
 export class Excel {
   constructor(selector, options) {
-    this.$el = document.querySelector(selector);
+    this.$el = $(selector);
     this.components = options.components || [];
   }
 
   getRoot() {
-    const $root = document.createElement("div");
+    const $root = $.create("div", "excel");
+
     this.components.forEach((Component) => {
-      const component = new Component();
-      $root.insertAdjacentHTML("beforeend", component.toHTML()); // для первого рендера вставляем в начало;
+      const $el = $.create("div", Component.className); // создаем  элемент для компонента
+      const component = new Component($el); // прередаем $el как аргумент компонента
+      $el.html(component.toHTML());
+      $root.append($el); // складываем елемент спомощью метода append
     });
     return $root;
   }
   render() {
-    // insertAdjacentHTML - этот метод позволяет вставлять HTML-код внутрь элемента
-    // afterbegin, afterend, beforebegin, beforeend
-    // this / this.$el.insertAdjacentHTML("afterbegin", "<h1>Test</h1>"); // для первого рендера вставляем в начало
-    // --- а можно так! ---
     this.$el.append(this.getRoot());
   }
 }
