@@ -43,6 +43,7 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, "src"), // убираем import ../../../core/Component
       "@core": path.resolve(__dirname, "src/core"), // теперь пишим import @core/Component
+      "@components": path.resolve(__dirname, "src/components"),
     },
   },
   devtool: isDev ? "source-map" : false, // "source-map" --- Рекомендуемый выбор для производственных сборок с высококачественными исходными картами

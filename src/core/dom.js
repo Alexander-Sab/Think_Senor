@@ -21,9 +21,12 @@ class Dom {
     this.html("");
     return this;
   }
-  append(node) {
-    console.log("append", node);
 
+  on(eventType, callback) {
+    this.$el.addEventListener(eventType, callback);
+  }
+
+  append(node) {
     if (Element.prototype.append) {
       if (node instanceof Dom) {
         node = node.$el;
