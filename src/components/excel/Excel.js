@@ -12,6 +12,10 @@ export class Excel {
     this.components = this.components.map((Component) => {
       const $el = $.create("div", Component.className); // создаем  элемент для компонента
       const component = new Component($el); // прередаем $el как аргумент компонента
+      // DEBUG
+      // if (component.name) {
+      //   window["c" + component.name] = component;
+      // }
       $el.html(component.toHTML());
       $root.append($el); // складываем елемент спомощью метода append
       return component;
