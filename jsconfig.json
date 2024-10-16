@@ -1,0 +1,11 @@
+// jsconfig.json добавлен чтобы VS Code мог распознавать алиасы и автодополнять пути
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@core/*": ["src/core/*"]
+    }
+  },
+  "include": ["src"]
+}

@@ -11,12 +11,20 @@
     "linebreak-style": ["off"], // Отключает правило linebreak-style
     "quotes": ["error", "double"], // Требует использовать двойные кавычки
     "object-curly-spacing": ["off"], // Отключает требование пробела внутри фигурных скобок
-    "max-len": ["error", { "code": 150 }] // Увеличивает максимально допустимую длину строки до 100
+    "max-len": ["error", { "code": 150 }], // Увеличивает максимально допустимую длину строки до 100
+
+    "valid-jsdoc": 0, // Отключает требование JSDoc
+    "operator-linebreak": "off",
+    "no-debugger": "off",
+    "no-trailing-spaces": "off",
+    "no-undef": "off",
+    "indent": "off",
+    "no-unused-vars": "off",
 
     //"semi": "off", // Отключает требование точки с запятой
     //"arrow-parens": "off", // Отключает требование скобок
     //"comma-dangle": "off", // Отключает требование запятых в конце объекта
-    //"require-jsdoc": ["off"] // Отключает требование JSDoc
+    "require-jsdoc": ["off"] // Отключает требование JSDoc
   },
   // используем готовый пресет
   // установка npm i -D eslint eslint-config-google
