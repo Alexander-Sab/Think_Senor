@@ -37,8 +37,15 @@ class Dom {
     }
     return this;
   }
-}
 
+  closest(selector) {
+    return $(this.$el.closest(selector));
+  }
+
+  getCoords() {
+    return this.$el.getBoundingClientRect(); // getBoundingClientRect - это метод для получения координат элемента
+  }
+}
 export function $(selector) {
   return new Dom(selector);
 }
