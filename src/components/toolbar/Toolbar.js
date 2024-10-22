@@ -28,6 +28,18 @@ export class Toolbar extends ExcelComponent {
           <div class="button">
             <i class="material-icons"> format_underline </i>
           </div>
+         
+          <button class="btn">
+        excel
+        <span class="btn__line">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+      
     `;
   }
 
