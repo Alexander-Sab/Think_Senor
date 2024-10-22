@@ -1,6 +1,8 @@
 import { ExcelComponent } from "@core/ExcelComponent";
-import { createTable } from "@components/table/table.template";
-import { $ } from "@core/dom";
+import { createTable } from "@/components/table/table.template";
+
+import { resizeHandler } from "./table.resize";
+import { shouldResize } from "./table.functions";
 
 export class Table extends ExcelComponent {
   static className = "excel__table";
@@ -16,22 +18,14 @@ export class Table extends ExcelComponent {
   }
 
   onMousedown(event) {
-    if (event.target.dataset.resize) {
-      const resizer = $(event.target);
-      // const parent = resizer.$el.parentNode; // bad practice
-      // const parent = resizer.closest(".column") // better but bad
-      const parent = resizer.closest(`[data-type="resizable"]`);
-      const coords = parent.getCoords();
-
-      document.onmousemove = (e) => {
-        const delta = e.pageX - coords.right;
-        const value = coords.width + delta;
-        parent.$el.style.width = value + "px";
-      };
+    if (shouldResize(event)) {
+      resizeHandler(this.$root, event);
     }
-
-    document.onmouseup = () => {
-      document.onmousemove = null;
-    };
   }
 }
+
+// 589 msScripting
+// 2433 msRendering
+
+// 440 msScripting
+// 1771 msRendering
